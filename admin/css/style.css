@@ -1,0 +1,138 @@
+.clear_float{clear: both;}
+*{margin: 0;padding: 0}
+.body_bg{background: url("../images/body_bg.jpg") repeat-x;}
+/*后台index界面样式---------------------------------------------------------*/
+.index{
+    width: 100%;
+}
+.index .header{
+}
+.index .mainbody{
+    width: 1000px;
+    padding: 80px 100px 0 100px;
+    margin: 0 auto;
+}
+.index .logo{
+    text-align: center;
+    border-top: 5px solid #FEB847;
+    border-bottom: 5px solid #FEB847;
+    width: 38%;
+    margin: 0px auto 50px auto;
+    font-size:5em;
+    color: #FEB847;
+}
+.index .content_tab{
+    width: 230px;
+    height: 300px;
+    margin-right: 26px;
+    background: #FEB847;
+    cursor: pointer;
+    float: left;
+    text-decoration: none;
+}
+.index .content_tab span{
+    display: block;
+    border: 9px solid #eeeeee;
+    border-radius: 150px;
+    width: 150px;
+    height: 150px;
+    margin: 40px auto 10px auto;
+    line-height: 150px;
+    text-align: center;
+    font-family: 'Lobster', cursive;
+    font-size: 40px;
+    color: #eeeeee;
+}
+.index .content_tab p{
+    text-align: center;
+    font-size: 40px;
+    color: #eeeeee;
+    font-family: "微软雅黑", "宋体";
+}
+/*更改国家界面样式----------------------------------------------------------*/
+.change_country_mainbody{
+    background: url("../images/mainbody_left_bg.jpg")repeat-y #ffffff;
+    border: 1px solid #f0d6ab;
+    width: 1000px;
+    margin: 0 auto;
+}
+.change_country_left{
+    width: 180px;
+    float: left;
+    min-height: 500px;
+}
+.change_country_left ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.change_country_left ul li{
+    height: 70px;
+    line-height: 70px;
+    overflow: hidden;
+    display: block;
+    text-align: center;
+    font-size: 20px;
+    color: #AEAEAE;
+    border-bottom: 1px solid #F3F3F3;
+}
+.change_country_lefts{
+    background: url("../images/mainbody_left_tabsbg.png") 0 0 no-repeat;
+    width: 199px;
+
+}
+.change_country_left a{
+    font-family: 微软雅黑;
+    text-decoration: none;
+    color: #333;
+    cursor: pointer;
+
+}
+.change_country_right{
+    float: right;
+}
+/*country_add页面样式*/
+#add_country{
+    width: 800px;
+    padding-top: 50px;
+}
+#add_country .left{
+    width: 320px;
+    text-align: right;
+    padding-right:25px;
+}
+#add_country tr{
+    height: 40px;
+}
+/*country_delete页面样式*/
+#delete_country{
+    width: 800px;
+    padding-top: 50px;
+}
+#delete_country table{
+    width: 600px;
+    margin: 0 auto;
+    border-collapse: collapse;
+    border: 1px solid #FEB847;
+}
+#delete_country table td{
+    height: 50px;
+    text-align: center;
+    font-size: 22px;
+    font-family: "微软雅黑", "宋体";
+}
+/*isLogin -------------------------------------------------*/
+.isLogin{
+    height: 30px;
+    width: 100%;
+    line-height: 30px;
+    font-family: "微软雅黑", "宋体";
+    background: #cccccc;
+    text-align: right;
+}
+.isLogin a{
+    margin: 0px 50px;
+    font-size: 14px;
+    text-decoration: none;
+
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+</head>
+<?php
+    include("../db_link.php");
+?>
+<body>
+<div class="wrap">
+    <div class="leixing">
+        <div class="header"></div>
+        <div class="mainbody">
+            <div class="content">
+                <?php
+                    $sql="SELECT * FROM country_information";
+                    $result=mysql_query($sql,$db_link);
+                    while ($v1=mysql_fetch_array($result)) {
+                ?>
+                    <div class="content_block">
+                        <img class="country_flag" src="<?php echo '../'.$v1["country_flag"];?>" height="100"><div class="country_name"><?php echo $v1["country_name"];?><img src="images/kind_jiantou.jpg"></div>
+                        <ul>
+                            <?php
+                                $sql="SELECT * FROM battleship WHERE battleship_country = ".$v1["country_id"]." &&battleship_kind = "" ";
+                                $result=mysql_query($sql,$db_link);
+                                while ($v1=mysql_fetch_array($result)) {
+                            ?>
+                            <?php
+                                }
+                            ?>
+
+                            <li>
+                                <a href=""><img src="battle_ico/lnj.png"><p>辽宁舰</p></a>
+                            </li>
+                        </ul>
+                    </div>
+                <?php
+                    }
+                    
+                ?>
+            </div>
+        </div>
+        <div class="footer"></div>
+    </div>
+</div>
+</body>
+</html>

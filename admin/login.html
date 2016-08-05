@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-1.8.2.js"></script>
+    <script>
+        $(function(){
+            $(".log_right_div").click(function(){
+                $(this).css({"border-bottom": "2px solid #03D4DE"});
+                $(".log_left_div").css({"border-bottom": "2px solid white"})
+            });
+            $(".log_left_div").click(function(){
+                $(this).css({"border-bottom": "2px solid #03D4DE"});
+                $(".log_right_div").css({"border-bottom": "2px solid white"})
+            });
+            $("#uname").click(function(){
+               $("#uname").css({"opacity":"1"});
+            });
+        });
+    </script>
+    <script>
+        window.onload=function() {
+            var oUname = document.getElementById("uname");
+            oUname.onfocus = function () {
+                {
+                    oUname.value = "";
+                }
+            }
+        }
+        function fun_ajax(){
+            var XHRequest;
+            //创建XMLHttpRequest对象
+            if (window.XMLHttpRequest) {//目前高版本浏览器
+                XHRequest = new XMLHttpRequest();
+            }else if(window.ActiveXObject){
+                try{XHRequest =new ActiveXObject("Microsoft.XMLHTTP")}catch (e){
+                    XHRequest = new ActiveXObject("Msxml2.XMLHTTP");//ie7以上 火狐低版本
+                }
+            }
+            //提取数据
+            var v_uname=document.getElementById("uname").value;
+            var v_upsd=document.getElementById("upsd").value;
+//      传送数据
+            var v_url="login.php?uname="+v_uname+"&upsd="+v_upsd;
+//      open( 请求方式，请求地址，是否异步)
+            XHRequest.open('get',v_url,true);
+            // 回调——接受服务器返回数据
+            XHRequest.onreadystatechange=function(){
+                if(XHRequest.status==200 && XHRequest.readyState==4){
+                    var str= XHRequest.responseText;
+//                    alert(str);
+                    if (str=='成功'){
+                        location.href="index.php";
+                    }
+                    if(str=='失败'){
+                        var show=document.getElementById("show");
+                        show.innerHTML="您的用户名或密码错误，是否忘记会员名或忘记密码。";
+                        show.style.opacity=1;
+                    }
+                }
+            }
+            XHRequest.send();
+        }
+    </script>
+<style>
+    .login_bg {
+        background:url("images/login_bg.jpg") ;
+        width: 1200px;
+        height: 650px;
+        margin: 0 auto;
+        position: relative;
+    }
+    .login_box{
+        width: 360px;
+        height: 350px;
+        /*border: 2px solid darkcyan;*/
+        position: absolute;
+        left: 720px;
+        top: 200px;
+        background-color: #feb847;
+        opacity: 0.9;
+        border-radius: 20px;
+    }
+    .log_left_div,.log_right_div{
+        width: 178px;
+        height: 60px;
+        float: left;
+        font-size: 18px;
+        font-family: 微软雅黑;
+        line-height: 60px;
+        text-align: center;
+        font-weight: bolder;
+        /*border: 1px solid darkblue;*/
+        border-bottom: 2px solid white;
+        cursor: pointer;
+
+    }
+    .log_left_div{
+       border-right: 3px solid #feb847;
+        border-bottom: 2px solid #03D4DE;
+    }
+    .login_box .log_right_div .rr{
+        border-bottom: 2px solid #03D4DE;
+    }
+    #uname{
+        width: 240px;
+        font-size: 14px;
+        line-height: 18px;
+        height: 18px;
+        padding: 11px 8px 11px 50px;
+        border: 1px solid #ddd;
+        color: #ccc;
+        background: url("images/icon_1.jpg")white top left no-repeat ;
+        margin-left: 35px;
+        margin-top: 40px;
+    }
+    #upsd{
+        width: 240px;
+        font-size: 14px;
+        line-height: 18px;
+        height: 18px;
+        padding: 11px 8px 11px 50px;
+        border: 1px solid #ddd;
+        background: url("images/icon_2.jpg") white top left no-repeat ;
+        margin-top: 20px;
+        margin-left: 35px;
+
+    }
+    .log_button{
+        width: 300px;
+        height: 42px;
+        border: 0;
+        display: inline-block;
+        vertical-align: middle;
+        line-height: 42px;
+        font-size: 18px;
+        font-weight: 700;
+        color: white;
+        background: #03D4DE;
+        cursor: pointer;
+        margin-top: 30px;
+        margin-left: 35px;
+        border-radius: 10px;
+    }
+    .log_text{
+        color: white;
+        font-size: 16px;
+        margin-left: 220px;
+        margin-top: 10px;
+    }
+    #show{
+        width: 320px;
+        height: 30px;
+        border:2px solid  #03D4DE;
+        position: absolute;
+        left: 20px;
+        top: 70px;
+        font-size: 13px;
+        color: white;
+        line-height: 30px;
+        opacity: 0;
+    }
+
+</style>
+</head>
+<body>
+<div class="login">
+    <div class="login_bg">
+        <div class="login_box">
+            <div class="log_left_div">用户登录</div>
+            <div class="log_right_div">修改密码</div>
+            <div id="show"></div>
+            <input type="text" id="uname" value="请输入用户名">
+            <input type="password" id="upsd">
+            <div class="log_text">忘记登录密码？</div>
+            <button class="log_button" onclick="fun_ajax()">登 录</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>

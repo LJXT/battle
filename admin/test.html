@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<?php
+header("Content-type:text/html;charset=utf-8");
+$v_country_id=$_REQUEST["country_id"];
+$db_link=mysql_connect("localhost","root","admin");
+$db=mysql_select_db("web",$db_link);
+$sql="select * from country_information where country_id='$v_country_id'";
+$result=mysql_query($sql,$db_link);
+if($v1=mysql_fetch_array($result)){
+?>
+<div>
+    <div>国家id<?php echo $v1["country_name"]?></div>
+    <div>国家名称<?php echo $v1["country_id"]?></div>
+    <div>国家国旗<img src="<?php echo $v1['country_flag']?>" style="border: 1px solid red"></div>
+    <div>国家历史<img src="<?php echo $v1['country_history']?>" style="border: 1px solid red"></div>
+    <div>国家图片<img src="<?php echo $v1['country_picture']?>" style="border: 1px solid red"></div>
+</div>
+</body>
+</html>
+<?php
+}
+else{
+    echo "失败"
+}
+?>
